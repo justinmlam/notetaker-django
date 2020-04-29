@@ -1,0 +1,99 @@
+{% load static %}
+<html>
+	<head>
+		<title>Justin Lam's Notetaker</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="{% static 'notetaker/style.css' %}">
+	</head>
+	<body>
+		<header id="header">
+			<!-- MAIN NAV -->
+			<nav id="main-navigation" class="main-nav">
+				<div class="info-title-wrapper">
+					<div class="site-title-wrapper">
+                        <h1 class="page-title">notetaker.</h1>
+                        <h4 class="page-title">for procogia, from justin.</h4>
+					</div>
+				</div>
+
+
+			<!-- BODY -->
+			<div class="base">
+
+                <div class="column">
+                    <h1 class="section-title notes">Notes</h1>
+                    {% if note_list %}
+                        {% for note in note_list %}
+                        <div class="note-article">
+                            <div class="note-title">
+                                <h3><a href="/note/{{ note.id }}/">{{ note.title }}</a></h3>
+                            </div>
+                            <div class="note-body">
+                                {% if note.body|length <= 200 %}
+                                    {{ note.body }}
+                                {% else %}
+                                    {{ note.body|slice:":200" }}... <a href="/note/{{ note.id }}/" class="readmore">read more</a>
+                                {% endif %}
+
+                                <br /><br />
+
+                                <form action="/deleteNote/{{ note.id }}/" method="post">{% csrf_token %}
+                                    <input type="submit" value="Delete"/>
+                                </form>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        
+                    {% endif %}
+
+                    <div class="note-article">
+                        <div class="note-body">
+                            <form action="/addNote/" method="post">{% csrf_token %}
+                                <input type="text" name="title" />
+                                <input type="text" name="body" />
+                                <input type="submit" value="Add" />
+                            </form>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+                <div class="column">
+                    <h1 class="section-title todos">Todo</h1>
+                    {% if todo_list %}
+                        <div class="todo-article">
+                            <ul>
+                            {% for todo in todo_list %}
+                                <li> 
+                                    <!-- need to add javascript to make this possible. do it last -->
+                                    <form action="/doneTodo/{{ todo_item.id }}" method="post">{% csrf_token %}
+                                    <input type="checkbox" id="{{ todo.id }}" name="{{ todo.id }}" {% if todo.done %} checked {% endif %}>
+                                    </form>
+                                    <label for="{{ todo.id }}">
+                                        {% if todo.done %} <s>  {% endif %}
+                                        {{ todo.title }}
+                                        {% if todo.done %} </s>  {% endif %}
+                                    </label>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        </div>
+                    {% else %}
+                        <ul><li>No todos to show.</li></ul>
+                    {% endif %}
+                </div>
+
+
+
+
+            </div>
+		</header>
+	</body>
+</html>
+
+
+
+

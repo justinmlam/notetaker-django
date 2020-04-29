@@ -1,0 +1,91 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+
+
+body {
+	background-color: #f6f6f6;
+}
+
+.page-title {
+	text-align: center;
+}
+
+.section-title {
+	text-align: center;
+	border-style: solid;
+	padding: 0;
+	margin: 0;
+}
+
+.column {
+	/* background: url("images/background.png"); */
+	display: table-cell;
+	width: 50%;
+	padding: 0 2.5rem;
+}
+
+.base {
+	display: table;
+	width:100%
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.logo {
+	height: 125px;
+	width: 125px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.home-link {
+	position: center;
+}
+.bg-img {
+	width: 100%;
+	height: auto;
+}
+
+.base {
+	width: 100%;
+}
+
+.info-title-wrapper {
+	padding-top: 2rem;
+}
+
+
+.cf{
+	padding-left: 0px;
+}
+
+.note-article {
+	border-style: solid;
+	border-width: thin;
+	margin-top: 2rem;
+	background-color: #e3f4ff;
+	padding: 0 1rem;
+}
+
+.todo-article {
+	border-style: solid;
+	border-width: thin;
+	margin-top: 2rem;
+	background-color: #ffe0e0;
+}
+
+.notes {
+	background-color: #b5e2ff;
+}
+
+.todos {
+	background-color: #ffc4c4;
+}
+
+.readmore{
+	color: blue;
+}
