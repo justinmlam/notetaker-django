@@ -10,8 +10,7 @@ class Note(models.Model):
 
 
 class Todo(models.Model):
-    title = models.CharField(max_length=50)
-    body = models.CharField(max_length=500)
+    title = models.CharField(max_length=100)
     pub_date = models.DateTimeField('date published')
     done = models.BooleanField(default=False)
 
