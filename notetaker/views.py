@@ -13,16 +13,9 @@ def index(request):
     }
     return render(request, 'notetaker/index.html', context)
 
-
-
 class NoteView(generic.DetailView):
     model = Note
     template_name = 'notetaker/note_detail.html'
-
-def doneTodo(request, todo_id):
-    item_done = Todo.objects.get(id=todo_id)
-    item_done['done'] = not item_done['done']
-    return HttpResponseRedirect('/')
 
 def addNote(request):
     title = request.POST['title']

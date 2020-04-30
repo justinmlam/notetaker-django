@@ -1,1 +1,0 @@
-# notetaker-django-app
